@@ -1,0 +1,28 @@
+<%- include("partials/header") %>
+
+<h2>Popular Restaurants</h2>
+
+<div class="restaurant-grid">
+
+  <%
+    const restaurantList = Array.isArray(restaurants) ? restaurants : [];
+    restaurantList.forEach(r => {
+  %>
+
+    <div class="restaurant-card">
+
+      <div class="avatar">
+        <%= r.name.charAt(0) %>
+      </div>
+
+      <h3><%= r.name %></h3>
+      <p><%= r.cuisine %></p>
+      <p>⭐ <%= r.rating %></p>
+
+    </div>
+
+  <% }); %>
+
+</div>
+
+<%- include("partials/footer") %>
