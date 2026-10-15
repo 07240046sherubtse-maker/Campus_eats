@@ -18,9 +18,17 @@ exports.deactivateRestaurant = (id) => {
 exports.getAllRestaurants = () => {
   return db.any('SELECT * FROM restaurants WHERE is_active = true ORDER BY id');
 };
+
 exports.getRestaurantById = (id) => {
   return db.oneOrNone(
     'SELECT * FROM restaurants WHERE id = $1 AND is_active = true',
     [id]
+  );
+};
+
+exports.getRestaurantByOwnerId = (ownerId) => {
+  return db.oneOrNone(
+    'SELECT * FROM restaurants WHERE owner_id = $1 AND is_active = true ORDER BY id LIMIT 1',
+    [ownerId]
   );
 };
